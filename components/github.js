@@ -1,67 +1,61 @@
-// Simple GitHub activity feed (public events). No auth used.
-// Enter a username in the input; default is "octocat".
-(function () {
-    const input = document.getElementById('gh-user');
-    const btn = document.getElementById('gh-load');
-    const list = document.getElementById('gh-events');
-  
-    async function loadEvents(username) {
-      if (!username) return;
-      list.innerHTML = '<li class="muted">Loading…</li>';
-      try {
-        const res = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}/events/public`);
-        if (!res.ok) {
-          list.innerHTML = `<li class="muted">Unable to fetch events for ${username}.</li>`;
-          return;
-        }
-        const events = await res.json();
-        if (!Array.isArray(events) || events.length === 0) {
-          list.innerHTML = `<li class="muted">No recent public activity for ${username}.</li>`;
-          return;
-        }
-  
-        const items = events.slice(0, 6).map(ev => {
-          const when = new Date(ev.created_at).toLocaleString();
-          const type = ev.type.replace(/Event$/, '');
-          let repo = ev.repo && ev.repo.name ? ev.repo.name : '';
-          let text = `${type} ${repo}`.trim();
-          // Provide a short readable message for common event types
-          if (ev.type === 'PushEvent' && ev.payload && ev.payload.commits) {
-            const c = ev.payload.commits[0];
-            const msg = c && c.message ? `: ${c.message}` : '';
-            text = `Push to ${repo}${msg}`;
-          } else if (ev.type === 'CreateEvent') {
-            text = `Created ${ev.payload.ref_type} ${ev.payload.ref || ''} in ${repo}`.trim();
-          } else if (ev.type === 'IssuesEvent') {
-            text = `${ev.payload.action} issue in ${repo}`;
-          } else if (ev.type === 'PullRequestEvent') {
-            text = `${ev.payload.action} PR in ${repo}`;
-          }
-          return `<li><strong>${escapeHtml(text)}</strong><div class="muted">${escapeHtml(when)}</div></li>`;
-        }).join('');
-        list.innerHTML = items;
-      } catch (err) {
-        console.error(err);
-        list.innerHTML = '<li class="muted">Error loading GitHub activity.</li>';
-      }
+// GitHub Activity Widget
+const ghUserInput = document.getElementById('gh-user');
+const ghLoadBtn = document.getElementById('gh-load');
+const ghEventsList = document.getElementById('gh-events');
+
+if (ghLoadBtn) {
+  ghLoadBtn.addEventListener('click', loadGitHubActivity);
+}
+
+if (ghUserInput) {
+  ghUserInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') loadGitHubActivity();
+  });
+}
+
+async function loadGitHubActivity() {
+  if (!ghUserInput || !ghEventsList) return;
+
+  const username = ghUserInput.value.trim();
+  if (!username) return;
+
+  ghLoadBtn.textContent = 'Loading...';
+  ghLoadBtn.disabled = true;
+  ghEventsList.innerHTML = '<li class="pulse muted">Loading activity...</li>';
+
+  try {
+    const response = await fetch(`https://api.github.com/users/${username}/events/public?per_page=10`);
+
+    if (!response.ok) {
+      throw new Error('User not found or API rate limited');
     }
-  
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, function (m) {
-        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m];
-      });
+
+    const events = await response.json();
+
+    if (!events.length) {
+      ghEventsList.innerHTML = '<li class="muted">No recent activity found.</li>';
+      return;
     }
-  
-    document.addEventListener('DOMContentLoaded', () => {
-      const defaultUser = input && input.value ? input.value.trim() : 'octocat';
-      loadEvents(defaultUser);
-    });
-  
-    if (btn) {
-      btn.addEventListener('click', () => {
-        const user = input.value.trim();
-        loadEvents(user);
-      });
-    }
-  })();
-  
+
+    ghEventsList.innerHTML = events
+      .map((event) => {
+        const eventType = event.type.replace(/([A-Z])/g, ' $1').trim();
+        const repo = event.repo?.name || 'unknown';
+        const createdAt = new Date(event.created_at).toLocaleDateString();
+        return `<li><strong>${eventType}</strong> on <code style="background: var(--clr-bg); padding: 2px 4px; border-radius: 3px; font-size: 0.8em;">${repo}</code> (${createdAt})</li>`;
+      })
+      .join('');
+  } catch (error) {
+    ghEventsList.innerHTML = `<li style="color: #ef4444;">${error.message}</li>`;
+  } finally {
+    ghLoadBtn.textContent = 'Load';
+    ghLoadBtn.disabled = false;
+  }
+}
+
+// Load default user on page load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadGitHubActivity);
+} else {
+  loadGitHubActivity();
+}
