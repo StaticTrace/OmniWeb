@@ -1,0 +1,70 @@
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .container {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .clock-time {
+    font-size: 2rem;
+  }
+
+  .weather-temp {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-brand {
+    font-size: 1.125rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .projects-list li {
+    padding: var(--space-md);
+  }
+
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .container {
+    padding: var(--space-md);
+  }
+}
+
+@media (max-width: 360px) {
+  .site-brand {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  .footer-nav {
+    gap: var(--space-md);
+  }
+}

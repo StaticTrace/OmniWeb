@@ -1,40 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projects - OmniWeb" />
+  <meta name="theme-color" content="#3b82f6" />
   <title>OmniWeb — Projects</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="site-brand">OmniWeb</div>
-    <nav class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html" class="nav-active">Projects</a>
-      <a href="dashboard.html">Dashboard</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="header-container">
+      <a href="index.html" class="site-brand" title="OmniWeb Home">OmniWeb</a>
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" data-page="home">Home</a>
+        <a href="about.html" data-page="about">About</a>
+        <a href="projects.html" class="nav-active" data-page="projects">Projects</a>
+        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+        <a href="contact.html" data-page="contact">Contact</a>
+        <button class="toggle-dark" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
+      </nav>
+    </div>
   </header>
 
   <main class="container">
-    <h1>Projects</h1>
-    <ul class="projects-list">
-      <li>
-        <strong>Dashboard</strong> — Live widgets for time, weather, and GitHub activity.
-        <a href="dashboard.html" class="project-link">Open Dashboard</a>
-      </li>
-      <li><strong>Project Two</strong> — Placeholder project.</li>
-    </ul>
+    <section>
+      <h1>Projects</h1>
+      <p>A showcase of featured projects and work.</p>
+      <ul class="projects-list">
+        <li>
+          <strong>Dashboard</strong>
+          <p>Live widgets for time, weather, and GitHub activity. Real-time updates without a backend.</p>
+          <a href="dashboard.html" class="project-link">View Dashboard →</a>
+        </li>
+        <li>
+          <strong>OmniWeb Template</strong>
+          <p>A clean, minimal template for building personal websites with modern design practices.</p>
+          <a href="https://github.com/StaticTrace/OmniWebTemplate" class="project-link" target="_blank">GitHub Repository →</a>
+        </li>
+      </ul>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <small>&copy; <span id="year"></span> OmniWeb</small>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <small>&copy; <span id="year">2026</span> OmniWeb. All rights reserved.</small>
+      <nav class="footer-nav" aria-label="Footer links">
+        <a href="https://github.com/StaticTrace/OmniWeb" rel="external" target="_blank">GitHub</a>
+        <a href="#" class="scroll-to-top" aria-label="Back to top">↑ Top</a>
+      </nav>
+    </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="js/utils.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

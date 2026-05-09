@@ -1,0 +1,9 @@
+/* Main stylesheet - Import all component styles */
+@import 'variables.css';
+@import 'global.css';
+@import 'header.css';
+@import 'footer.css';
+@import 'pages.css';
+@import 'dashboard.css';
+@import 'animations.css';
+@import 'responsive.css';
