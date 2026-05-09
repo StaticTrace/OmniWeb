@@ -1,0 +1,44 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	renamed:    css/animations.css -> animations.css
+#	renamed:    js/tools/calculator.js -> calculator.js
+#	renamed:    assets/icons/copy.svg -> copy.svg
+#	deleted:    css/style.css
+#	deleted:    css/tools.css
+#	renamed:    css/dashboard.css -> dashboard.css
+#	renamed:    css/footer.css -> footer.css
+#	renamed:    components/footer.html -> footer.html
+#	renamed:    components/github.js -> github.js
+#	renamed:    css/global.css -> global.css
+#	renamed:    css/header.css -> header.css
+#	renamed:    components/header.html -> header.html
+#	deleted:    includes/footer.html
+#	deleted:    includes/header.html
+#	deleted:    js/components/github.js
+#	deleted:    js/components/time.js
+#	deleted:    js/components/weather.js
+#	renamed:    js/tools/json-formatter.js -> json-formatter.js
+#	renamed:    js/main.js -> main.js
+#	renamed:    js/tools/name-generator.js -> name-generator.js
+#	renamed:    css/pages.css -> pages.css
+#	renamed:    js/tools/password-generator.js -> password-generator.js
+#	renamed:    css/responsive.css -> responsive.css
+#	renamed:    assets/js/script.js -> script.js
+#	renamed:    assets/style.css -> style.css
+#	renamed:    js/tools/text-counter.js -> text-counter.js
+#	renamed:    components/time.js -> time.js
+#	renamed:    assets/test-helpers/tools-test-helpers.js -> tools-test-helpers.js
+#	renamed:    assets/tools.css -> tools.css
+#	renamed:    assets/tools.js -> tools.js
+#	renamed:    assets/tests/tools.spec.js -> tools.spec.js
+#	renamed:    js/utils.js -> utils.js
+#	renamed:    css/variables.css -> variables.css
+#	renamed:    css/vault.css -> vault.css
+#	renamed:    components/weather.js -> weather.js
+#
