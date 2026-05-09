@@ -3,85 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Vault - Personal notes, ideas, and learning logs" />
-  <meta name="theme-color" content="#3b82f6" />
+  <meta name="description" content="Vault - Personal notes" />
+  <meta name="theme-color" content="#4f46e5" />
   <title>OmniWeb — Vault</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/vault.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="header-container">
-      <a href="index.html" class="site-brand" title="OmniWeb Home">OmniWeb</a>
-      <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
-      <nav class="site-nav" role="navigation" aria-label="Main navigation">
-        <a href="index.html" data-page="home">Home</a>
-        <a href="about.html" data-page="about">About</a>
-        <a href="projects.html" data-page="projects">Projects</a>
-        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
-        <a href="tools.html" data-page="tools">Tools</a>
-        <a href="vault.html" class="nav-active" data-page="vault">Vault</a>
-        <a href="contact.html" data-page="contact">Contact</a>
-        <button class="toggle-dark" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
+      <a href="index.html" class="site-brand">OmniWeb</a>
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
+      <nav class="site-nav" role="navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="tools.html">Tools</a>
+        <a href="vault.html" class="nav-active">Vault</a>
+        <a href="contact.html">Contact</a>
+        <button class="toggle-dark" aria-label="Toggle dark mode">🌙</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="vault-intro">
-      <h1>🔐 Vault</h1>
-      <p>Your personal space for notes, ideas, projects, and learning logs. Everything is stored locally in your browser.</p>
-    </section>
-
-    <section class="vault-controls">
-      <div class="control-group">
-        <label for="vault-type">Category</label>
-        <select id="vault-type" class="vault-select">
-          <option value="note">📝 Note</option>
-          <option value="idea">💡 Idea</option>
-          <option value="project">🚀 Project Idea</option>
-          <option value="learning">📚 Learning Log</option>
-        </select>
-      </div>
-      <div class="control-group">
-        <label for="vault-title">Title</label>
-        <input id="vault-title" type="text" class="vault-input" placeholder="Give it a name..." />
-      </div>
-      <button id="vault-add" class="vault-btn vault-btn-primary">Add Entry</button>
-      <button id="vault-export" class="vault-btn">Export All</button>
-    </section>
-
-    <div class="vault-content">
-      <textarea id="vault-text" class="vault-textarea" placeholder="Write your thoughts here..."></textarea>
+    <h1>🔐 Vault</h1>
+    <p>Personal notes stored locally in your browser (localStorage).</p>
+    <div class="widget">
+      <textarea id="vault-text" placeholder="Write your note here..." style="width:100%; height:180px; background:rgba(0,0,0,0.3); color:white; border:none; padding:12px;"></textarea>
+      <button onclick="saveVaultNote()">Save Note</button>
+      <button onclick="loadVaultNotes()">Load Notes</button>
+      <div id="vault-list" style="margin-top:16px;"></div>
     </div>
-
-    <section class="vault-entries">
-      <h2>Your Entries</h2>
-      <div class="vault-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="note">Notes</button>
-        <button class="filter-btn" data-filter="idea">Ideas</button>
-        <button class="filter-btn" data-filter="project">Projects</button>
-        <button class="filter-btn" data-filter="learning">Learning</button>
-      </div>
-      <div id="vault-list" class="vault-list">
-        <p class="empty-state">No entries yet. Start by creating your first one!</p>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="footer-container">
-      <small>&copy; <span id="year">2026</span> OmniWeb. All rights reserved.</small>
-      <nav class="footer-nav" aria-label="Footer links">
-        <a href="https://github.com/StaticTrace/OmniWeb" rel="external" target="_blank">GitHub</a>
-        <a href="#" class="scroll-to-top" aria-label="Back to top">↑ Top</a>
-      </nav>
+      <small>&copy; <span id="year">2026</span> OmniWeb.</small>
     </div>
   </footer>
 
-  <script src="js/utils.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/components/vault.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function saveVaultNote() {
+      const text = document.getElementById('vault-text').value.trim();
+      if (!text) return;
+      let notes = JSON.parse(localStorage.getItem('vaultNotes') || '[]');
+      notes.push({ text, date: new Date().toLocaleString() });
+      localStorage.setItem('vaultNotes', JSON.stringify(notes));
+      alert('Note saved!');
+      loadVaultNotes();
+    }
+    function loadVaultNotes() {
+      const list = document.getElementById('vault-list');
+      const notes = JSON.parse(localStorage.getItem('vaultNotes') || '[]');
+      list.innerHTML = notes.map((n,i) => `<div style="margin-bottom:12px;">${i+1}. ${n.text} <small>(${n.date})</small></div>`).join('');
+    }
+  </script>
 </body>
 </html>

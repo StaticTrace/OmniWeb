@@ -4,22 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="OmniWeb - A lightweight personal website and dashboard" />
-  <meta name="theme-color" content="#3b82f6" />
+  <meta name="theme-color" content="#4f46e5" />
   <title>OmniWeb — Home</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="header-container">
-      <a href="index.html" class="site-brand" title="OmniWeb Home">OmniWeb</a>
-      <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+      <a href="index.html" class="site-brand">OmniWeb</a>
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
       <nav class="site-nav" role="navigation" aria-label="Main navigation">
-        <a href="index.html" class="nav-active" data-page="home">Home</a>
-        <a href="about.html" data-page="about">About</a>
-        <a href="projects.html" data-page="projects">Projects</a>
-        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
-        <a href="contact.html" data-page="contact">Contact</a>
-        <button class="toggle-dark" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
+        <a href="index.html" class="nav-active">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="tools.html">Tools</a>
+        <a href="vault.html">Vault</a>
+        <a href="contact.html">Contact</a>
+        <button class="toggle-dark" aria-label="Toggle dark mode">🌙</button>
       </nav>
     </div>
   </header>
@@ -27,23 +29,21 @@
   <main class="container">
     <section>
       <h1>Welcome to OmniWeb</h1>
-      <p>A lightweight personal website and dashboard template with live widgets.</p>
-      <p>Built with vanilla HTML, CSS, and JavaScript for maximum performance and flexibility.</p>
-      <a href="dashboard.html" class="project-link">Explore Dashboard →</a>
+      <p>A lightweight, zero-dependency personal website and dashboard template.</p>
+      <p>Built with pure HTML, CSS, and Vanilla JS for maximum performance.</p>
+      <a href="dashboard.html" style="color:var(--accent); font-weight:600;">Explore Dashboard →</a>
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="footer-container">
       <small>&copy; <span id="year">2026</span> OmniWeb. All rights reserved.</small>
-      <nav class="footer-nav" aria-label="Footer links">
-        <a href="https://github.com/StaticTrace/OmniWeb" rel="external" target="_blank">GitHub</a>
-        <a href="#" class="scroll-to-top" aria-label="Back to top">↑ Top</a>
+      <nav>
+        <a href="https://github.com/StaticTrace/OmniWeb" target="_blank">GitHub</a>
       </nav>
     </div>
   </footer>
 
-  <script src="js/utils.js"></script>
-  <script src="js/main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
