@@ -1,27 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Projects | OmniWeb</title>
-
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OmniWeb — Projects</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <div class="site-brand">OmniWeb</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html" class="nav-active">Projects</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-  <section class="projects-preview">
+  <main class="container">
+    <h1>Projects</h1>
+    <ul class="projects-list">
+      <li>
+        <strong>Dashboard</strong> — Live widgets for time, weather, and GitHub activity.
+        <a href="dashboard.html" class="project-link">Open Dashboard</a>
+      </li>
+      <li><strong>Project Two</strong> — Placeholder project.</li>
+    </ul>
+  </main>
 
-    <h3>Projects</h3>
+  <footer class="site-footer">
+    <small>&copy; <span id="year"></span> OmniWeb</small>
+  </footer>
 
-    <div class="cards">
-
-      <div class="card">
-        <h4>Coming Soon</h4>
-        <p>Future project showcase.</p>
-      </div>
-
-    </div>
-
-  </section>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

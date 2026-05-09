@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OmniWeb — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-brand">OmniWeb</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="dashboard.html" class="nav-active">Dashboard</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container dashboard">
+    <h1 class="dashboard-title">Dashboard</h1>
+
+    <section class="dashboard-grid">
+      <!-- Time Card -->
+      <article class="dashboard-card" id="time-card" aria-live="polite">
+        <h2>🕒 Current Time</h2>
+        <div id="clock-time" class="clock-time">--:--:--</div>
+        <div id="clock-date" class="clock-date">Loading date...</div>
+      </article>
+
+      <!-- Weather Card -->
+      <article class="dashboard-card" id="weather-card" aria-live="polite">
+        <h2>🌤️ Weather</h2>
+        <div id="weather-status">Detecting location…</div>
+        <div id="weather-main" class="weather-main" hidden>
+          <div class="weather-temp" id="weather-temp">--°</div>
+          <div class="weather-desc" id="weather-desc">—</div>
+          <div class="weather-meta" id="weather-meta">—</div>
+        </div>
+        <div id="weather-error" class="error" hidden></div>
+      </article>
+
+      <!-- GitHub Activity Card -->
+      <article class="dashboard-card" id="github-card" aria-live="polite">
+        <h2>🐙 GitHub Activity</h2>
+        <div class="github-config">
+          <label for="gh-user">GitHub username</label>
+          <input id="gh-user" type="text" placeholder="octocat" value="octocat" />
+          <button id="gh-load">Load</button>
+        </div>
+        <ul id="gh-events" class="gh-events">
+          <li class="muted">No activity loaded.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>&copy; <span id="year"></span> OmniWeb</small>
+  </footer>
+
+  <script src="components/time.js"></script>
+  <script src="components/weather.js"></script>
+  <script src="components/github.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
