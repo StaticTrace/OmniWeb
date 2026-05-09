@@ -9,7 +9,7 @@
 <body>
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="/">OmniWeb</a>
+      <a class="brand" href="/index.html">OmniWeb</a>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/index.html">Home</a>
         <a href="/projects.html">Projects</a>
@@ -40,7 +40,10 @@
         <span id="word-count">Words: 0</span>
         <span id="line-count">Lines: 0</span>
       </div>
-      <button class="copy-btn" data-copy-target="text-input">Copy text</button>
+      <div class="form-row">
+        <button class="copy-btn" data-copy-target="text-input">Copy text</button>
+        <button id="text-clear">Clear</button>
+      </div>
     </section>
 
     <section id="password-generator" class="tool" aria-labelledby="pw-h">
