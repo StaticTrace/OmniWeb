@@ -1,0 +1,159 @@
+@import 'variables.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-system);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  transition: var(--transition);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+  color: var(--clr-text);
+}
+
+h1 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--clr-text-muted);
+}
+
+/* Links */
+a {
+  color: var(--clr-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--clr-primary-dark);
+}
+
+a[target="_blank"]::after {
+  content: ' ↗';
+  font-size: 0.85em;
+}
+
+/* Lists */
+ul, ol {
+  margin-left: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+li {
+  margin-bottom: var(--space-sm);
+}
+
+/* Code & Monospace */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--clr-bg-alt);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  color: var(--clr-accent);
+}
+
+pre {
+  background: var(--clr-bg-alt);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  margin-bottom: var(--space-md);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Form Elements */
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  width: 100%;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--space-lg);
+}
+
+/* Utilities */
+.muted {
+  color: var(--clr-text-muted);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-1 { margin-top: var(--space-md); }
+.mt-2 { margin-top: var(--space-lg); }
+.mb-1 { margin-bottom: var(--space-md); }
+.mb-2 { margin-bottom: var(--space-lg); }
+.p-1 { padding: var(--space-md); }
+.p-2 { padding: var(--space-lg); }
+
+[hidden] {
+  display: none !important;
+}

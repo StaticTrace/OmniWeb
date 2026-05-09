@@ -1,0 +1,116 @@
+/* Projects List */
+.projects-list {
+  list-style: none;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.projects-list li {
+  padding: var(--space-lg);
+  background: var(--clr-bg-alt);
+  border-left: 4px solid var(--clr-primary);
+  border-radius: var(--radius-lg);
+  transition: var(--transition);
+}
+
+.projects-list li:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-md);
+  border-left-color: var(--clr-secondary);
+}
+
+.projects-list li strong {
+  color: var(--clr-text);
+}
+
+.projects-list li p {
+  margin: var(--space-md) 0;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--clr-primary);
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: var(--transition-fast);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.project-link:hover {
+  background: var(--clr-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-link:active {
+  transform: translateY(0);
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 600px;
+  margin: var(--space-2xl) 0;
+}
+
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: var(--space-md);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  font-size: 1rem;
+  transition: var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px var(--clr-primary-light);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group button {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--clr-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  font-size: 1rem;
+}
+
+.form-group button:hover {
+  background: var(--clr-primary-dark);
+  transform: translateY(-2px);
+}
+
+.form-group button:active {
+  transform: translateY(0);
+}
