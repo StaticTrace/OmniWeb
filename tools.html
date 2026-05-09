@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quick Tools - Handy utilities and mini tools" />
+  <meta name="theme-color" content="#3b82f6" />
+  <title>OmniWeb — Quick Tools</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/tools.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-brand" title="OmniWeb Home">OmniWeb</a>
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" data-page="home">Home</a>
+        <a href="about.html" data-page="about">About</a>
+        <a href="projects.html" data-page="projects">Projects</a>
+        <a href="tools.html" class="nav-active" data-page="tools">Tools</a>
+        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+        <a href="contact.html" data-page="contact">Contact</a>
+        <button class="toggle-dark" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="tools-intro">
+      <h1>Quick Tools</h1>
+      <p>Handy utilities for everyday tasks. No server, all processing happens in your browser.</p>
+    </section>
+
+    <section class="tools-grid">
+      <!-- Text Counter Tool -->
+      <div class="tool-card">
+        <h2>📝 Text Counter</h2>
+        <div class="tool-content">
+          <textarea id="text-input" class="tool-textarea" placeholder="Enter your text here..." spellcheck="true"></textarea>
+          <div class="text-stats">
+            <div class="stat">
+              <span class="stat-label">Characters:</span>
+              <span class="stat-value" id="char-count">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Words:</span>
+              <span class="stat-value" id="word-count">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Lines:</span>
+              <span class="stat-value" id="line-count">0</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Avg Word Length:</span>
+              <span class="stat-value" id="avg-word-length">0</span>
+            </div>
+          </div>
+          <button id="clear-text" class="tool-btn">Clear</button>
+        </div>
+      </div>
+
+      <!-- Password Generator Tool -->
+      <div class="tool-card">
+        <h2>🔐 Password Generator</h2>
+        <div class="tool-content">
+          <div class="form-group">
+            <label for="password-length">Password Length</label>
+            <div class="length-control">
+              <input id="password-length" type="range" min="8" max="32" value="16" />
+              <span id="length-display" class="length-display">16</span>
+            </div>
+          </div>
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" id="include-uppercase" checked />
+              Uppercase (A-Z)
+            </label>
+            <label>
+              <input type="checkbox" id="include-lowercase" checked />
+              Lowercase (a-z)
+            </label>
+            <label>
+              <input type="checkbox" id="include-numbers" checked />
+              Numbers (0-9)
+            </label>
+            <label>
+              <input type="checkbox" id="include-symbols" checked />
+              Symbols (!@#$%...)
+            </label>
+          </div>
+          <div class="form-group">
+            <input id="generated-password" type="text" class="tool-input" readonly placeholder="Generated password" />
+            <button id="copy-password" class="tool-btn" title="Copy to clipboard">Copy</button>
+          </div>
+          <button id="generate-password" class="tool-btn tool-btn-primary">Generate</button>
+        </div>
+      </div>
+
+      <!-- Random Name Generator Tool -->
+      <div class="tool-card">
+        <h2>🎲 Random Name Generator</h2>
+        <div class="tool-content">
+          <div class="form-group">
+            <label for="name-type">Name Type</label>
+            <select id="name-type" class="tool-select">
+              <option value="first-male">First Name (Male)</option>
+              <option value="first-female">First Name (Female)</option>
+              <option value="first-neutral">First Name (Neutral)</option>
+              <option value="last">Last Name</option>
+              <option value="full-male">Full Name (Male)</option>
+              <option value="full-female">Full Name (Female)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name-count">Generate</label>
+            <div class="count-control">
+              <input id="name-count" type="number" min="1" max="10" value="1" class="tool-input" />
+              <span class="label-text">names</span>
+            </div>
+          </div>
+          <div class="names-output" id="names-output">
+            <p class="placeholder">Click "Generate" to create names</p>
+          </div>
+          <button id="generate-names" class="tool-btn tool-btn-primary">Generate Names</button>
+        </div>
+      </div>
+
+      <!-- Simple Calculator Tool -->
+      <div class="tool-card">
+        <h2>🧮 Simple Calculator</h2>
+        <div class="tool-content">
+          <input id="calc-display" type="text" class="calc-display" readonly value="0" />
+          <div class="calc-buttons">
+            <button class="calc-btn" data-action="clear">AC</button>
+            <button class="calc-btn" data-action="delete">DEL</button>
+            <button class="calc-btn operator" data-operator="/">÷</button>
+            <button class="calc-btn operator" data-operator="*">×</button>
+
+            <button class="calc-btn" data-num="7">7</button>
+            <button class="calc-btn" data-num="8">8</button>
+            <button class="calc-btn" data-num="9">9</button>
+            <button class="calc-btn operator" data-operator="-">−</button>
+
+            <button class="calc-btn" data-num="4">4</button>
+            <button class="calc-btn" data-num="5">5</button>
+            <button class="calc-btn" data-num="6">6</button>
+            <button class="calc-btn operator" data-operator="+">+</button>
+
+            <button class="calc-btn" data-num="1">1</button>
+            <button class="calc-btn" data-num="2">2</button>
+            <button class="calc-btn" data-num="3">3</button>
+            <button class="calc-btn" data-num=".">.</button>
+
+            <button class="calc-btn zero" data-num="0">0</button>
+            <button class="calc-btn equals" data-action="equals">=</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- JSON Formatter Tool -->
+      <div class="tool-card">
+        <h2>{ } JSON Formatter</h2>
+        <div class="tool-content">
+          <div class="json-control">
+            <button id="format-json" class="tool-btn" title="Format JSON">Format</button>
+            <button id="minify-json" class="tool-btn" title="Minify JSON">Minify</button>
+            <button id="validate-json" class="tool-btn" title="Validate JSON">Validate</button>
+            <button id="copy-json" class="tool-btn" title="Copy to clipboard">Copy</button>
+          </div>
+          <textarea id="json-input" class="tool-textarea tool-textarea-mono" placeholder="Paste your JSON here..."></textarea>
+          <div id="json-status" class="json-status" hidden></div>
+          <textarea id="json-output" class="tool-textarea tool-textarea-mono" readonly placeholder="Formatted output will appear here..."></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <small>&copy; <span id="year">2026</span> OmniWeb. All rights reserved.</small>
+      <nav class="footer-nav" aria-label="Footer links">
+        <a href="https://github.com/StaticTrace/OmniWeb" rel="external" target="_blank">GitHub</a>
+        <a href="#" class="scroll-to-top" aria-label="Back to top">↑ Top</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/tools/text-counter.js"></script>
+  <script src="js/tools/password-generator.js"></script>
+  <script src="js/tools/name-generator.js"></script>
+  <script src="js/tools/calculator.js"></script>
+  <script src="js/tools/json-formatter.js"></script>
+</body>
+</html>
