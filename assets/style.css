@@ -3,7 +3,6 @@
    These rules include header, container, focus outlines, and helper classes used by tools.
 */
 
-/* Basic layout and container */
 :root{
   --text:#e6eef6;
   --muted:#9aa4b2;

@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Quick Tools</title>
+  <title>Quick Tools — OmniWeb</title>
   <link rel="stylesheet" href="/assets/tools.css">
+  <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
+  <!-- Header (shared component) -->
   <header class="site-header">
     <div class="container">
       <a class="brand" href="/index.html">OmniWeb</a>
@@ -41,8 +43,8 @@
         <span id="line-count">Lines: 0</span>
       </div>
       <div class="form-row">
-        <button class="copy-btn" data-copy-target="text-input">Copy text</button>
-        <button id="text-clear">Clear</button>
+        <button class="copy-btn" data-copy-target="text-input" type="button" aria-label="Copy text">Copy text</button>
+        <button id="text-clear" type="button">Clear</button>
       </div>
     </section>
 
@@ -57,9 +59,9 @@
         <label><input id="pw-symbols" type="checkbox"> Symbols</label>
       </div>
       <div class="form-row">
-        <button id="pw-gen">Generate</button>
+        <button id="pw-gen" type="button">Generate</button>
         <input id="pw-output" readonly aria-label="Generated password" placeholder="Generated password appears here">
-        <button class="copy-btn" data-copy-target="pw-output">Copy</button>
+        <button class="copy-btn" data-copy-target="pw-output" type="button" aria-label="Copy password">Copy</button>
       </div>
     </section>
 
@@ -73,9 +75,9 @@
         <option value="female">Female</option>
       </select>
       <div class="form-row">
-        <button id="name-gen">Generate name</button>
+        <button id="name-gen" type="button">Generate name</button>
         <div id="name-output" class="output" aria-live="polite"></div>
-        <button class="copy-btn" data-copy-target="name-output">Copy</button>
+        <button class="copy-btn" data-copy-target="name-output" type="button" aria-label="Copy name">Copy</button>
       </div>
     </section>
 
@@ -84,7 +86,7 @@
       <p class="muted">Evaluate basic arithmetic expressions. Allowed characters: digits, + - * / ( ) . and spaces.</p>
       <div class="form-row">
         <input id="calc-input" placeholder="e.g. (12.5 + 3) * 2 - 4/2" aria-label="Calculator input">
-        <button id="calc-eval">Calculate</button>
+        <button id="calc-eval" type="button">Calculate</button>
       </div>
       <div id="calc-output" class="output" aria-live="polite"></div>
     </section>
@@ -96,9 +98,9 @@
       <textarea id="json-input" rows="10" placeholder='Paste JSON here'></textarea>
       <div class="form-row">
         <label>Indent <input id="json-indent" type="number" min="0" max="8" value="2" aria-label="JSON indent"></label>
-        <button id="json-format">Format</button>
-        <button id="json-minify">Minify</button>
-        <button class="copy-btn" data-copy-target="json-output">Copy</button>
+        <button id="json-format" type="button">Format</button>
+        <button id="json-minify" type="button">Minify</button>
+        <button class="copy-btn" data-copy-target="json-output" type="button" aria-label="Copy JSON">Copy</button>
       </div>
       <pre id="json-output" class="output" aria-live="polite"></pre>
     </section>

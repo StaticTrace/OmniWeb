@@ -8,19 +8,24 @@
   // Helpers
   function $(id) { return document.getElementById(id); }
   function randFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
   async function copyTextFromElement(targetId) {
     const el = $(targetId);
     if (!el) return;
-    const text = (el.value !== undefined && el.value !== '') ? el.value : el.textContent || '';
-    try { await navigator.clipboard.writeText(text); showToast('Copied'); }
-    catch (e) { showToast('Copy failed'); }
+    const text = (el.value !== undefined && el.value !== '') ? el.value : (el.textContent || '');
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('Copied');
+    } catch (e) {
+      showToast('Copy failed');
+    }
   }
+
   function showToast(msg) {
     const t = document.createElement('div');
     t.className = 'toast';
     t.textContent = msg;
     document.body.appendChild(t);
-    // trigger animation
     requestAnimationFrame(() => t.classList.add('visible'));
     setTimeout(() => t.classList.remove('visible'), 1400);
     setTimeout(() => t.remove(), 1800);

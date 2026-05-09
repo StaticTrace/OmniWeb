@@ -6,7 +6,7 @@ OmniWeb is a lightweight static starter site for prototyping UI components, port
 
 ## Quick Tools
 
-A new client-side utilities page has been added at **/tools.html**. It contains five mini-utilities:
+A client-side utilities page has been added at **/tools.html**. It contains five mini-utilities:
 
 - **Text counter** — counts characters, words, and lines in real time.
 - **Password generator** — secure random passwords using `crypto.getRandomValues`.
@@ -21,7 +21,7 @@ A new client-side utilities page has been added at **/tools.html**. It contains 
 
 ### Files updated
 - `/components/header.html` — navigation updated to include a Tools link.
-- `/assets/styles.css` — small global rules added/merged to ensure consistent focus styles and helper classes.
+- `/assets/styles.css` — global rules added/merged to ensure consistent focus styles and helper classes.
 
 ---
 
