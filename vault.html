@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vault - Personal notes, ideas, and learning logs" />
+  <meta name="theme-color" content="#3b82f6" />
+  <title>OmniWeb — Vault</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/vault.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-brand" title="OmniWeb Home">OmniWeb</a>
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" data-page="home">Home</a>
+        <a href="about.html" data-page="about">About</a>
+        <a href="projects.html" data-page="projects">Projects</a>
+        <a href="dashboard.html" data-page="dashboard">Dashboard</a>
+        <a href="tools.html" data-page="tools">Tools</a>
+        <a href="vault.html" class="nav-active" data-page="vault">Vault</a>
+        <a href="contact.html" data-page="contact">Contact</a>
+        <button class="toggle-dark" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="vault-intro">
+      <h1>🔐 Vault</h1>
+      <p>Your personal space for notes, ideas, projects, and learning logs. Everything is stored locally in your browser.</p>
+    </section>
+
+    <section class="vault-controls">
+      <div class="control-group">
+        <label for="vault-type">Category</label>
+        <select id="vault-type" class="vault-select">
+          <option value="note">📝 Note</option>
+          <option value="idea">💡 Idea</option>
+          <option value="project">🚀 Project Idea</option>
+          <option value="learning">📚 Learning Log</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="vault-title">Title</label>
+        <input id="vault-title" type="text" class="vault-input" placeholder="Give it a name..." />
+      </div>
+      <button id="vault-add" class="vault-btn vault-btn-primary">Add Entry</button>
+      <button id="vault-export" class="vault-btn">Export All</button>
+    </section>
+
+    <div class="vault-content">
+      <textarea id="vault-text" class="vault-textarea" placeholder="Write your thoughts here..."></textarea>
+    </div>
+
+    <section class="vault-entries">
+      <h2>Your Entries</h2>
+      <div class="vault-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="note">Notes</button>
+        <button class="filter-btn" data-filter="idea">Ideas</button>
+        <button class="filter-btn" data-filter="project">Projects</button>
+        <button class="filter-btn" data-filter="learning">Learning</button>
+      </div>
+      <div id="vault-list" class="vault-list">
+        <p class="empty-state">No entries yet. Start by creating your first one!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <small>&copy; <span id="year">2026</span> OmniWeb. All rights reserved.</small>
+      <nav class="footer-nav" aria-label="Footer links">
+        <a href="https://github.com/StaticTrace/OmniWeb" rel="external" target="_blank">GitHub</a>
+        <a href="#" class="scroll-to-top" aria-label="Back to top">↑ Top</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/components/vault.js"></script>
+</body>
+</html>
