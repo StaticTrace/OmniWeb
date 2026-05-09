@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quick Tools</title>
+  <link rel="stylesheet" href="/assets/tools.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/">OmniWeb</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/index.html">Home</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/tools.html" aria-current="page">Tools</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <h1>Quick Tools</h1>
+
+    <nav class="tools-nav" aria-label="Tools navigation">
+      <a href="#text-counter">Text counter</a>
+      <a href="#password-generator">Password generator</a>
+      <a href="#name-generator">Random name generator</a>
+      <a href="#calculator">Simple calculator</a>
+      <a href="#json-formatter">JSON formatter</a>
+    </nav>
+
+    <section id="text-counter" class="tool" aria-labelledby="text-counter-h">
+      <h2 id="text-counter-h">Text counter</h2>
+      <p class="muted">Counts characters, words, and lines in real time.</p>
+      <label for="text-input" class="sr-only">Text input</label>
+      <textarea id="text-input" rows="8" placeholder="Paste or type text..." aria-describedby="text-stats"></textarea>
+      <div id="text-stats" class="stats" aria-live="polite">
+        <span id="char-count">Chars: 0</span>
+        <span id="word-count">Words: 0</span>
+        <span id="line-count">Lines: 0</span>
+      </div>
+      <button class="copy-btn" data-copy-target="text-input">Copy text</button>
+    </section>
+
+    <section id="password-generator" class="tool" aria-labelledby="pw-h">
+      <h2 id="pw-h">Password generator</h2>
+      <p class="muted">Generate secure random passwords using the browser crypto API.</p>
+      <div class="form-row">
+        <label>Length <input id="pw-length" type="number" min="4" max="64" value="16" aria-label="Password length"></label>
+        <label><input id="pw-lower" type="checkbox" checked> a-z</label>
+        <label><input id="pw-upper" type="checkbox" checked> A-Z</label>
+        <label><input id="pw-digits" type="checkbox" checked> 0-9</label>
+        <label><input id="pw-symbols" type="checkbox"> Symbols</label>
+      </div>
+      <div class="form-row">
+        <button id="pw-gen">Generate</button>
+        <input id="pw-output" readonly aria-label="Generated password" placeholder="Generated password appears here">
+        <button class="copy-btn" data-copy-target="pw-output">Copy</button>
+      </div>
+    </section>
+
+    <section id="name-generator" class="tool" aria-labelledby="name-h">
+      <h2 id="name-h">Random name generator</h2>
+      <p class="muted">Quick first + last name generator. Lists are small and extendable.</p>
+      <label for="name-gender">Gender</label>
+      <select id="name-gender" aria-label="Name gender">
+        <option value="any">Any</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div class="form-row">
+        <button id="name-gen">Generate name</button>
+        <div id="name-output" class="output" aria-live="polite"></div>
+        <button class="copy-btn" data-copy-target="name-output">Copy</button>
+      </div>
+    </section>
+
+    <section id="calculator" class="tool" aria-labelledby="calc-h">
+      <h2 id="calc-h">Simple calculator</h2>
+      <p class="muted">Evaluate basic arithmetic expressions. Allowed characters: digits, + - * / ( ) . and spaces.</p>
+      <div class="form-row">
+        <input id="calc-input" placeholder="e.g. (12.5 + 3) * 2 - 4/2" aria-label="Calculator input">
+        <button id="calc-eval">Calculate</button>
+      </div>
+      <div id="calc-output" class="output" aria-live="polite"></div>
+    </section>
+
+    <section id="json-formatter" class="tool" aria-labelledby="json-h">
+      <h2 id="json-h">JSON formatter</h2>
+      <p class="muted">Validate and pretty-print JSON. Shows parse errors when invalid.</p>
+      <label for="json-input" class="sr-only">JSON input</label>
+      <textarea id="json-input" rows="10" placeholder='Paste JSON here'></textarea>
+      <div class="form-row">
+        <label>Indent <input id="json-indent" type="number" min="0" max="8" value="2" aria-label="JSON indent"></label>
+        <button id="json-format">Format</button>
+        <button id="json-minify">Minify</button>
+        <button class="copy-btn" data-copy-target="json-output">Copy</button>
+      </div>
+      <pre id="json-output" class="output" aria-live="polite"></pre>
+    </section>
+
+    <footer class="tools-footer">
+      <p class="muted">Client-side utilities only. No data is sent to a server.</p>
+    </footer>
+  </main>
+
+  <script src="/assets/tools.js" defer></script>
+</body>
+</html>
