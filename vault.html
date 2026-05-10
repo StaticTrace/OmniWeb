@@ -1,63 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Vault - Personal notes" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vault - Secure local notes">
   <title>OmniWeb — Vault</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="header-container">
       <a href="index.html" class="site-brand">OmniWeb</a>
-      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
-      <nav class="site-nav" role="navigation">
+      <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="dashboard.html">Dashboard</a>
         <a href="tools.html">Tools</a>
-        <a href="vault.html" class="nav-active">Vault</a>
+        <a href="vault.html" class="active">Vault</a>
         <a href="contact.html">Contact</a>
-        <button class="toggle-dark" aria-label="Toggle dark mode">🌙</button>
+        <button class="toggle-dark" aria-label="Toggle theme">🌙</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
     <h1>🔐 Vault</h1>
-    <p>Personal notes stored locally in your browser (localStorage).</p>
+    <p>Private notes stored securely in your browser (localStorage).</p>
+    
     <div class="widget">
-      <textarea id="vault-text" placeholder="Write your note here..." style="width:100%; height:180px; background:rgba(0,0,0,0.3); color:white; border:none; padding:12px;"></textarea>
-      <button onclick="saveVaultNote()">Save Note</button>
-      <button onclick="loadVaultNotes()">Load Notes</button>
-      <div id="vault-list" style="margin-top:16px;"></div>
+      <textarea id="vault-input" rows="8" placeholder="Write your private note here..."></textarea>
+      <div style="margin-top: 12px;">
+        <button onclick="saveVault()">Save Note</button>
+        <button onclick="loadVault()">Load Notes</button>
+        <button onclick="clearVault()" style="background:#ef4444;">Clear All</button>
+      </div>
+      <div id="vault-list" style="margin-top: 20px;"></div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="footer-container">
-      <small>&copy; <span id="year">2026</span> OmniWeb.</small>
+      <small>&copy; <span id="year"></span> OmniWeb • Built with Vanilla Everything</small>
     </div>
   </footer>
 
   <script src="script.js"></script>
   <script>
-    function saveVaultNote() {
-      const text = document.getElementById('vault-text').value.trim();
-      if (!text) return;
-      let notes = JSON.parse(localStorage.getItem('vaultNotes') || '[]');
-      notes.push({ text, date: new Date().toLocaleString() });
-      localStorage.setItem('vaultNotes', JSON.stringify(notes));
-      alert('Note saved!');
-      loadVaultNotes();
+    function saveVault() {
+      const text = document.getElementById('vault-input').value.trim();
+      if (!text) return alert("Note is empty");
+      
+      let notes = JSON.parse(localStorage.getItem('omniVault') || '[]');
+      notes.unshift({ text, date: new Date().toLocaleString() });
+      localStorage.setItem('omniVault', JSON.stringify(notes));
+      alert("Note saved securely in browser!");
+      loadVault();
     }
-    function loadVaultNotes() {
+
+    function loadVault() {
       const list = document.getElementById('vault-list');
-      const notes = JSON.parse(localStorage.getItem('vaultNotes') || '[]');
-      list.innerHTML = notes.map((n,i) => `<div style="margin-bottom:12px;">${i+1}. ${n.text} <small>(${n.date})</small></div>`).join('');
+      const notes = JSON.parse(localStorage.getItem('omniVault') || '[]');
+      
+      if (notes.length === 0) {
+        list.innerHTML = '<p style="color:var(--muted);">No notes yet.</p>';
+        return;
+      }
+      
+      list.innerHTML = notes.map((n, i) => `
+        <div style="background:rgba(255,255,255,0.05); padding:12px; border-radius:8px; margin-bottom:12px;">
+          <small style="color:var(--muted);">${n.date}</small>
+          <p>${n.text.replace(/\n/g, '<br>')}</p>
+        </div>
+      `).join('');
+    }
+
+    function clearVault() {
+      if (confirm("Clear all notes permanently?")) {
+        localStorage.removeItem('omniVault');
+        loadVault();
+      }
     }
   </script>
 </body>

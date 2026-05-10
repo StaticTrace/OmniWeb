@@ -1,50 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Quick Tools - Handy utilities" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tools - OmniWeb">
   <title>OmniWeb — Tools</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="header-container">
       <a href="index.html" class="site-brand">OmniWeb</a>
-      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
-      <nav class="site-nav" role="navigation">
+      <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="dashboard.html">Dashboard</a>
-        <a href="tools.html" class="nav-active">Tools</a>
+        <a href="tools.html" class="active">Tools</a>
         <a href="vault.html">Vault</a>
         <a href="contact.html">Contact</a>
-        <button class="toggle-dark" aria-label="Toggle dark mode">🌙</button>
+        <button class="toggle-dark" aria-label="Toggle theme">🌙</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <h1>Quick Tools</h1>
-    <p>Client-side utilities. Everything runs in your browser.</p>
-    
-    <!-- Tool sections can be expanded with individual JS files if needed -->
-    <div class="widget">
-      <h2>Text Counter</h2>
-      <textarea id="text-input" placeholder="Type or paste text..."></textarea>
-      <div id="text-stats" class="output"></div>
+    <h1>🛠 Tools</h1>
+    <p>All tools run locally in your browser — no data is sent anywhere.</p>
+
+    <div class="tools-grid">
+      <!-- Text Counter -->
+      <div class="widget">
+        <h2>Text Counter</h2>
+        <textarea id="text-input" rows="5" placeholder="Type or paste text here..."></textarea>
+        <div id="text-stats" class="output"></div>
+      </div>
+
+      <!-- Password Generator -->
+      <div class="widget">
+        <h2>Secure Password Generator</h2>
+        <div style="display:flex; gap:10px; margin-bottom:12px;">
+          <input type="text" id="password-output" readonly style="flex:1;">
+          <button onclick="generatePassword()">Generate</button>
+          <button onclick="copyPassword()">Copy</button>
+        </div>
+        <div style="font-size:0.9rem;">
+          <label><input type="checkbox" id="include-numbers" checked> Numbers</label>
+          <label><input type="checkbox" id="include-symbols" checked> Symbols</label>
+        </div>
+      </div>
+
+      <!-- Calculator -->
+      <div class="widget">
+        <h2>Calculator</h2>
+        <input type="text" id="calc-display" readonly style="width:100%; font-size:1.5rem; padding:12px; margin-bottom:10px;">
+        <div class="calc-grid">
+          <!-- Buttons added via JS for flexibility -->
+        </div>
+      </div>
+
+      <!-- JSON Formatter -->
+      <div class="widget">
+        <h2>JSON Formatter</h2>
+        <textarea id="json-input" rows="6" placeholder='{"key": "value"}'></textarea>
+        <button onclick="formatJSON()">Format JSON</button>
+        <button onclick="copyJSON()">Copy</button>
+        <pre id="json-output" class="output"></pre>
+      </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="footer-container">
-      <small>&copy; <span id="year">2026</span> OmniWeb.</small>
+      <small>&copy; <span id="year"></span> OmniWeb • Built with Vanilla Everything</small>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <!-- Add tool-specific scripts here if you keep them separate: e.g. <script src="tools.js"></script> -->
+  <script src="tools.js"></script>
 </body>
 </html>

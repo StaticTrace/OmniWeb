@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="OmniWeb - A lightweight personal website and dashboard" />
-  <meta name="theme-color" content="#4f46e5" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OmniWeb - Lightweight personal website and dashboard">
   <title>OmniWeb — Home</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="header-container">
       <a href="index.html" class="site-brand">OmniWeb</a>
-      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
-      <nav class="site-nav" role="navigation" aria-label="Main navigation">
-        <a href="index.html" class="nav-active">Home</a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      <nav class="site-nav">
+        <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
         <a href="dashboard.html">Dashboard</a>
         <a href="tools.html">Tools</a>
         <a href="vault.html">Vault</a>
         <a href="contact.html">Contact</a>
-        <button class="toggle-dark" aria-label="Toggle dark mode">🌙</button>
+        <button class="toggle-dark" aria-label="Toggle theme">🌙</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section>
-      <h1>Welcome to OmniWeb</h1>
-      <p>A lightweight, zero-dependency personal website and dashboard template.</p>
-      <p>Built with pure HTML, CSS, and Vanilla JS for maximum performance.</p>
-      <a href="dashboard.html" style="color:var(--accent); font-weight:600;">Explore Dashboard →</a>
-    </section>
+    <h1>Welcome to OmniWeb</h1>
+    <p>A fast, zero-dependency personal website &amp; dashboard template.</p>
+    <a href="dashboard.html" class="button">Open Dashboard →</a>
   </main>
 
   <footer class="site-footer">
     <div class="footer-container">
-      <small>&copy; <span id="year">2026</span> OmniWeb. All rights reserved.</small>
-      <nav>
-        <a href="https://github.com/StaticTrace/OmniWeb" target="_blank">GitHub</a>
-      </nav>
+      <small>&copy; <span id="year"></span> OmniWeb • Built with Vanilla Everything</small>
     </div>
   </footer>
 
