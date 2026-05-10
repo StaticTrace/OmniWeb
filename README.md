@@ -1,48 +1,80 @@
 # OmniWeb
 
-A lightweight, zero-dependency personal website and dashboard template with live widgets.
+**A lightweight, zero-dependency personal website & dashboard template** built with pure HTML, CSS, and Vanilla JavaScript.
 
-## Features
-- ✨ **No Dependencies** — Pure HTML, CSS & Vanilla JS
-- 🌙 **Dark/Light Mode** with localStorage persistence
+![OmniWeb Preview](https://via.placeholder.com/800x400/111827/6366f1?text=OmniWeb+Dashboard)
+
+## ✨ Features
+
+- 🌙 **Dark / Light Mode** with persistence
 - 📱 **Fully Responsive** (mobile-first)
-- ⚡ **Extremely Fast** — Minimal footprint
-- 🛠 **Tools Page** with 5 client-side utilities
-- ♿ **Accessible** — Semantic HTML + focus styles
+- ⚡ **Zero Dependencies** — Extremely fast
+- 🛠 **Built-in Tools** (all client-side)
+- 🔐 **Local Vault** (notes saved in browser)
+- 🕒 **Live Widgets** (Real-time clock + Weather)
+- ♿ **Accessible** & Semantic HTML
+- 🚀 **Ready for GitHub Pages**
 
 ## Live Demo
-https://StaticTrace.github.io/OmniWeb
+[https://StaticTrace.github.io/OmniWeb](https://StaticTrace.github.io/OmniWeb)
 
 ## Project Structure (Flat Root)
-All files are in the **root directory**:
-
 OmniWeb/
-├── *.html              # index, dashboard, tools, vault, etc.
-├── style.css           # All styles (consolidated)
-├── script.js           # Core JS + widgets
-├── tools.js            # Optional: Tool utilities
-├── calculator.js       # etc.
+├── index.html
+├── dashboard.html
+├── tools.html
+├── about.html
+├── projects.html
+├── contact.html
+├── vault.html
+├── style.css
+├── script.js
+├── tools.js
 ├── README.md
 ├── .nojekyll
-└── (support files)
-
+├── robots.txt
+├── sitemap.xml
+└── .gitignore
 
 ## Getting Started
-1. Clone: `git clone https://github.com/StaticTrace/OmniWeb.git`
-2. Serve locally:
+
+1. **Clone the repository**
    ```bash
-   python -m http.server 8000
-   # or
-   npx http-server
+   git clone https://github.com/StaticTrace/OmniWeb.git
+   cd OmniWeb
 
-Tools
+2. **Serve locally**
+# Python
+python -m http.server 8000
 
-Text Counter
-Secure Password Generator (crypto.getRandomValues)
-Random Name Generator
-Calculator
-JSON Formatter
+# or Node.js
+npx http-server
+
+Open http://localhost:8000
+
+🛠 Tools Included
+
+Text Counter — Characters, words, lines
+Secure Password Generator — Cryptographically strong
+Calculator — Clean UI with keyboard support ready
+JSON Formatter — Validate and prettify JSON
+Vault — Persistent local notes (localStorage)
+
+Tech Stack
+
+HTML5 Semantic Markup
+CSS3 (Custom Properties + Modern Layout)
+Vanilla JavaScript (ES6+)
+No frameworks, no build tools
+
+Customization
+
+Edit style.css for colors and layout
+Modify widgets in script.js
+Add new tools in tools.html + tools.js
+Update navigation in any .html file
 
 License
-MIT
-Built by @StaticTrace
+MIT License — Feel free to use this template for personal or commercial projects.
+
+Made with ❤️ by @StaticTrace
