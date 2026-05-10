@@ -1,50 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Live dashboard with widgets">
-  <title>OmniWeb — Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-container">
-      <a href="index.html" class="site-brand">OmniWeb</a>
-      <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="dashboard.html" class="active">Dashboard</a>
-        <a href="tools.html">Tools</a>
-        <a href="vault.html">Vault</a>
-        <a href="contact.html">Contact</a>
-        <button class="toggle-dark" aria-label="Toggle theme">🌙</button>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal dashboard — OmniWeb. Your home base with time, weather, focus, tasks, and quick links."
+    />
+    <meta property="og:title" content="OmniWeb — Dashboard" />
+    <meta
+      property="og:description"
+      content="Your personal home base with live widgets, to-do list, and quick links."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <title>OmniWeb — Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#6366f1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-container">
+        <a href="index.html" class="site-brand">OmniWeb</a>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="dashboard.html" class="active">Dashboard</a>
+          <a href="tools.html">Tools</a>
+          <a href="vault.html">Vault</a>
+          <a href="contact.html">Contact</a>
+          <button class="toggle-dark" aria-label="Toggle theme">🌙</button>
+        </nav>
+      </div>
+    </header>
 
-  <main class="container">
-    <h1>Dashboard</h1>
-    
-    <div class="widget">
-      <h2>🕒 Current Time</h2>
-      <div id="current-time" style="font-size: 3rem; font-weight: 600; letter-spacing: 2px;">--:--</div>
-    </div>
+    <main class="container">
+      <h1>Dashboard</h1>
 
-    <div class="widget">
-      <h2>🌤️ Tokyo Weather</h2>
-      <div id="weather">Loading...</div>
-    </div>
-  </main>
+      <div class="dashboard-grid">
+        <!-- Row 1: Time & Weather -->
+        <div class="widget">
+          <h2>🕒 Time</h2>
+          <div id="current-time" class="time-display">--:--:--</div>
+          <div id="current-date" class="time-date"></div>
+        </div>
 
-  <footer class="site-footer">
-    <div class="footer-container">
-      <small>&copy; <span id="year"></span> OmniWeb</small>
-    </div>
-  </footer>
+        <div class="widget">
+          <h2>🌤️ Tokyo Weather</h2>
+          <div id="weather">Loading…</div>
+        </div>
 
-  <script src="script.js"></script>
-</body>
+        <!-- Daily Focus — full width -->
+        <div class="widget widget-full">
+          <h2>🎯 Daily Focus</h2>
+          <div id="focus-widget"></div>
+        </div>
+
+        <!-- To-Do List -->
+        <div class="widget">
+          <h2>📌 To-Do List</h2>
+          <div class="todo-input-row">
+            <input
+              type="text"
+              id="todo-input"
+              placeholder="Add a task…"
+              maxlength="120"
+            />
+            <button onclick="addTodo()">Add</button>
+          </div>
+          <div id="todo-list" class="todo-list"></div>
+          <div id="todo-stats" class="todo-stats"></div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="widget">
+          <h2>📊 Site Analytics</h2>
+          <div id="analytics-widget">Loading…</div>
+        </div>
+
+        <!-- Daily Journal — full width -->
+        <div class="widget widget-full">
+          <h2>📓 Daily Journal</h2>
+          <div id="journal-widget"></div>
+        </div>
+
+        <!-- Habit Tracker — full width -->
+        <div class="widget widget-full">
+          <h2>✅ Habit Tracker</h2>
+          <div id="habit-widget"></div>
+        </div>
+
+        <!-- Pomodoro Timer — full width -->
+        <div class="widget widget-full">
+          <h2>🍅 Pomodoro Timer</h2>
+          <div id="pomodoro-widget"></div>
+        </div>
+
+        <!-- Quick Links — full width -->
+        <div class="widget widget-full" id="quicklinks-widget">
+          <h2>🔗 Quick Links</h2>
+          <div id="ql-grid" class="ql-grid"></div>
+          <div class="ql-add-row">
+            <input
+              type="text"
+              id="ql-icon"
+              class="ql-icon-input"
+              placeholder="🔗"
+              maxlength="4"
+            />
+            <input
+              type="text"
+              id="ql-label"
+              placeholder="Label"
+              maxlength="24"
+            />
+            <input type="url" id="ql-url" placeholder="https://…" />
+            <button onclick="addQuickLink()">Add Link</button>
+          </div>
+        </div>
+
+        <!-- GitHub Activity — full width -->
+        <div class="widget widget-full">
+          <h2>🐙 GitHub Activity</h2>
+          <div id="github-widget">Loading…</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <small>&copy; <span id="year"></span> OmniWeb</small>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
