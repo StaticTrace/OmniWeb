@@ -995,6 +995,189 @@ html.light .journal-date-label { color: var(--text); }
 html.light .pomo-mode:hover:not(.active) { background: rgba(0,0,0,0.06); color: var(--text); }
 html.light .pomo-btn-reset { background: var(--surface2); border-color: rgba(0,0,0,0.12); color: var(--muted); }
 
+/* ── Free Steam Games Widget ────────────────────────────────────────────────── */
+.steam-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  padding: 6px 0;
+}
+
+.steam-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(99,102,241,0.25);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.steam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.steam-card {
+  background: var(--surface2);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255,255,255,0.06);
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  position: relative;
+}
+.steam-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(99,102,241,0.2);
+}
+
+.steam-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 460 / 215;
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+.steam-card-img-wrap.no-img {
+  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(99,102,241,0.04));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.steam-card-img-wrap.no-img::after {
+  content: '🎮';
+  font-size: 2.5rem;
+}
+.steam-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.steam-card:hover .steam-card-img { transform: scale(1.04); }
+
+.steam-card-body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.steam-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  align-self: flex-start;
+  text-transform: uppercase;
+}
+.steam-badge-keep {
+  background: rgba(34,197,94,0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,0.3);
+}
+.steam-badge-weekend {
+  background: rgba(99,102,241,0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99,102,241,0.3);
+}
+
+.steam-card-title {
+  font-size: 0.93rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.steam-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.steam-time-started {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.steam-time-left {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.steam-time-left.urgent {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.steam-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.steam-link-btn {
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.steam-link-btn:hover { opacity: 0.75; }
+
+.steam-retry-btn {
+  font-size: 0.82rem;
+  background: var(--surface2);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--muted);
+  padding: 5px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+.steam-retry-btn:hover { color: var(--text); opacity: 1; }
+
+.steam-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(239,68,68,0.07);
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.steam-error-icon { font-size: 1.6rem; flex-shrink: 0; }
+.steam-error strong { display: block; margin-bottom: 4px; font-size: 0.95rem; }
+.steam-error p { color: var(--muted); font-size: 0.85rem; margin-bottom: 10px; }
+
+html.light .steam-card { background: var(--surface2); }
+html.light .steam-retry-btn { background: var(--surface2); border-color: rgba(0,0,0,0.12); }
+
+@media (max-width: 700px) {
+  .steam-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+}
+
 /* ── Journal mobile overflow fix ─────────────────────────────────────────────── */
 @media (max-width: 700px) {
   .journal-date-label { font-size: 0.82rem; }

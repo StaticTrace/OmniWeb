@@ -1,44 +1,43 @@
 {
-    "name": "OmniWeb",
-    "short_name": "OmniWeb",
-    "description": "Lightweight personal website and dashboard — time, weather, tools, notes, and more.",
-    "start_url": "/dashboard.html",
-    "display": "standalone",
-    "background_color": "#0a0f1c",
-    "theme_color": "#6366f1",
-    "orientation": "any",
-    "lang": "en",
-    "icons": [
-      {
-        "src": "favicon.svg",
-        "type": "image/svg+xml",
-        "sizes": "any",
-        "purpose": "any maskable"
-      }
-    ],
-    "shortcuts": [
-      {
-        "name": "Dashboard",
-        "short_name": "Dashboard",
-        "description": "Open the live dashboard",
-        "url": "/dashboard.html",
-        "icons": [{ "src": "favicon.svg", "sizes": "any" }]
-      },
-      {
-        "name": "Tools",
-        "short_name": "Tools",
-        "description": "Open the mini toolkit",
-        "url": "/tools.html",
-        "icons": [{ "src": "favicon.svg", "sizes": "any" }]
-      },
-      {
-        "name": "Vault",
-        "short_name": "Vault",
-        "description": "Open private notes",
-        "url": "/vault.html",
-        "icons": [{ "src": "favicon.svg", "sizes": "any" }]
-      }
-    ],
-    "categories": ["productivity", "utilities", "personalization"]
-  }
-  
+  "name": "OmniWeb",
+  "short_name": "OmniWeb",
+  "description": "Lightweight personal website and dashboard — time, weather, tools, notes, and more.",
+  "start_url": "/dashboard.html",
+  "display": "standalone",
+  "background_color": "#0a0f1c",
+  "theme_color": "#6366f1",
+  "orientation": "any",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Open the live dashboard",
+      "url": "/dashboard.html",
+      "icons": [{ "src": "favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Tools",
+      "short_name": "Tools",
+      "description": "Open the mini toolkit",
+      "url": "/tools.html",
+      "icons": [{ "src": "favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Vault",
+      "short_name": "Vault",
+      "description": "Open private notes",
+      "url": "/vault.html",
+      "icons": [{ "src": "favicon.svg", "sizes": "any" }]
+    }
+  ],
+  "categories": ["productivity", "utilities", "personalization"]
+}
