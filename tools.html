@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tools - OmniWeb">
+  <meta name="description" content="Client-side tools and utilities">
   <title>OmniWeb — Tools</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,7 +12,7 @@
     <div class="header-container">
       <a href="index.html" class="site-brand">OmniWeb</a>
       <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-      <nav class="site-nav">
+      <nav class="site-nav" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
@@ -27,8 +27,8 @@
 
   <main class="container">
     <h1>🛠 Tools</h1>
-    <p>All tools run locally in your browser — no data is sent anywhere.</p>
-
+    <p>All tools run locally in your browser.</p>
+    
     <div class="tools-grid">
       <!-- Text Counter -->
       <div class="widget">
@@ -54,18 +54,18 @@
       <!-- Calculator -->
       <div class="widget">
         <h2>Calculator</h2>
-        <input type="text" id="calc-display" readonly style="width:100%; font-size:1.5rem; padding:12px; margin-bottom:10px;">
-        <div class="calc-grid">
-          <!-- Buttons added via JS for flexibility -->
-        </div>
+        <input type="text" id="calc-display" class="calc-display" readonly>
+        <div class="calc-grid"></div>
       </div>
 
       <!-- JSON Formatter -->
       <div class="widget">
         <h2>JSON Formatter</h2>
         <textarea id="json-input" rows="6" placeholder='{"key": "value"}'></textarea>
-        <button onclick="formatJSON()">Format JSON</button>
-        <button onclick="copyJSON()">Copy</button>
+        <div style="margin-top:12px;">
+          <button onclick="formatJSON()">Format</button>
+          <button onclick="copyJSON()">Copy</button>
+        </div>
         <pre id="json-output" class="output"></pre>
       </div>
     </div>
@@ -73,7 +73,7 @@
 
   <footer class="site-footer">
     <div class="footer-container">
-      <small>&copy; <span id="year"></span> OmniWeb • Built with Vanilla Everything</small>
+      <small>&copy; <span id="year"></span> OmniWeb</small>
     </div>
   </footer>
 
