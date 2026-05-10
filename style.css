@@ -1,61 +1,241 @@
-/* style.css - Consolidated flat structure */
+/* style.css - Consolidated & Enhanced for OmniWeb (Flat Root) */
 :root {
+  --bg: #0a0f1c;
+  --surface: #111827;
   --text: #e6eef6;
-  --muted: #9aa4b2;
-  --accent: #4f46e5;
-  --bg: linear-gradient(180deg, #071023 0%, #071827 100%);
-  --radius: 8px;
-  --focus: rgba(79, 70, 229, 0.18);
+  --muted: #94a3b8;
+  --accent: #6366f1;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --radius: 12px;
+  --transition: all 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--bg);
-  font-family: system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
 /* Layout */
-.container { max-width: 980px; margin: 28px auto; padding: 0 18px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
 
 /* Header */
-.site-header { padding: 12px 0; }
-.header-container { display: flex; align-items: center; justify-content: space-between; }
-.site-brand { color: var(--text); font-weight: 600; text-decoration: none; font-size: 1.4rem; }
-.site-nav a { color: var(--muted); margin-left: 14px; text-decoration: none; }
-.site-nav a.active { color: var(--text); font-weight: 600; }
+.site-header {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
 
-/* Dark/Light Toggle */
-.toggle-dark { background: none; border: none; font-size: 1.4rem; cursor: pointer; }
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 
-/* Widgets & Cards */
-.widget { background: rgba(255,255,255,0.05); padding: 18px; border-radius: var(--radius); margin-bottom: 20px; }
+.site-brand { font-size: 1.55rem; font-weight: 700; color: white; text-decoration: none; }
 
-/* Tools specific */
-.output { background: rgba(0,0,0,0.06); padding: 12px; border-radius: 6px; white-space: pre-wrap; overflow: auto; }
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
 
-/* Buttons */
-button {
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.site-nav a:hover, .site-nav a.active { color: white; }
+
+.toggle-dark {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* Widgets */
+.widget {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Tools Grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.75rem;
+}
+
+/* Form Elements */
+textarea, input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-family: inherit;
+  resize: vertical;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Output Areas */
+.output {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 14px;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  max-height: 300px;
+}
+
+/* ==================== CALCULATOR STYLES (Refined) ==================== */
+.calc-display {
+  width: 100%;
+  background: #0a0f1c;
+  border: 2px solid #1f2937;
+  border-radius: 10px;
+  padding: 18px 16px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: right;
+  margin-bottom: 16px;
+  color: #e0f2fe;
+  letter-spacing: 1px;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.calc-grid button {
+  padding: 20px 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Number buttons */
+.calc-grid button:not(.operator):not(.special) {
+  background: #1f2937;
+  color: var(--text);
+}
+
+.calc-grid button:not(.operator):not(.special):hover {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+/* Operator buttons */
+.calc-grid button.operator {
   background: var(--accent);
   color: white;
-  border: 0;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
 }
-button:active { transform: translateY(1px); }
+
+.calc-grid button.operator:hover {
+  background: #818cf8;
+  transform: translateY(-2px);
+}
+
+/* Special buttons (C, ±, %) */
+.calc-grid button.special {
+  background: #334155;
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+.calc-grid button.special:hover {
+  background: #475569;
+  transform: translateY(-2px);
+}
+
+/* Equals button */
+.calc-grid button.equals {
+  background: #22c55e;
+  color: white;
+  font-weight: 700;
+  grid-column: span 1;
+}
+
+.calc-grid button.equals:hover {
+  background: #4ade80;
+}
+
+/* Zero button spans two columns */
+.calc-grid button.zero {
+  grid-column: span 2;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 
 /* Responsive */
-@media (max-width: 520px) {
-  .site-nav { flex-wrap: wrap; gap: 8px; }
-  .header-container { flex-direction: column; align-items: flex-start; }
+@media (max-width: 640px) {
+  .header-container { flex-direction: column; gap: 1rem; }
+  .site-nav { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .tools-grid { grid-template-columns: 1fr; }
+  
+  .calc-grid button { padding: 18px 6px; font-size: 1.1rem; }
 }
 
-/* Focus styles */
-a:focus, button:focus, input:focus, textarea:focus {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
+/* Light Mode */
+html.light {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #1e2937;
+  --muted: #64748b;
+}
+
+html.light .calc-display {
+  background: #f1f5f9;
+  color: #1e2937;
+  border-color: #cbd5e1;
 }
